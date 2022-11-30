@@ -54,3 +54,38 @@ SELECT videogame_id , COUNT(*) FROM `reviews` GROUP by videogame_id;
 
 SELECT pegi_label_id, count(*) FROM `pegi_label_videogame` GROUP BY pegi_label_id;
 
+
+4-SELECT year(release_date) FROM videogames GROUP BY YEAR(release_date);
+
+5-Contare quanti videogiochi sono disponbiili per ciascun device (del device vogliamo solo l'ID) (7)
+
+SELECT device_id,COUNT(*)FROM device_videogame GROUP BY device_id;
+
+6-Ordinare i videogame in base alla media delle recensioni (del videogioco vogliamo solo l'ID) (500)
+
+SELECT videogame_id,rating FROM reviews ORDER BY rating DESC;
+
+
+
+		QUERY CON IL JOIN
+
+
+1. Selezionare i dati di tutti giocatori che hanno scritto almeno una recensione, mostrandoli una sola volta (996)
+
+SELECT DISTINCT player_id FROM `reviews` JOIN players on reviews.player_id = players.id WHERE reviews.player_id = players.id;
+
+2-Sezionare tutti i videogame dei tornei tenuti nel 2016, mostrandoli una sola volta (226)
+
+SELECT distinct videogame_id FROM `tournament_videogame` JOIN tournaments ON videogame_id = tournaments.id where tournaments.year like 2016;
+
+3-SELECT DISTINCT category_id FROM `category_videogame` JOIN videogames ON category_id = videogames.id;
+
+4-Selezionare i dati di tutte le software house che hanno rilasciato almeno un gioco dopo il 2020, mostrandoli una sola volta (6)
+
+SELECT software_houses.id FROM `software_houses` JOIN videogames ON software_houses.id = videogames.id where videogames.release_date >= "2020%";
+
+5-Selezionare i premi ricevuti da ogni software house per i videogiochi che ha prodotto (55)
+
+
+
+
